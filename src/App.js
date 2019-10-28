@@ -91,7 +91,7 @@ function App() {
         <List className={classes.list}>
           {items.map(item => (
             <ListItem key={item.id} divider={true} className={classes.item}>
-              <Typography align="center">{item.text}</Typography>
+              <Typography>{item.text}</Typography>
               <Button
                 className={classes.button}
                 onClick={e => {
