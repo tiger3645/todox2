@@ -1,46 +1,11 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Typography,
-  Container,
-  TextField,
-  List,
-  ListItem,
-  Button
-} from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
+import { Typography, Container, TextField, List } from "@material-ui/core";
+import Item from "./Item";
+import useStyles from "./useStyles";
 
 let itemsArray = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
-
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  list: {
-    width: "100%",
-    maxWidth: 360,
-    position: "relative",
-    overflow: "auto",
-    maxHeight: "50vh"
-  },
-  button: {
-    margin: theme.spacing(1),
-    alignSelf: "flex-end"
-  },
-  title: {
-    maxHeight: "30vh",
-    marginBottom: "1rem"
-  },
-  item: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between"
-  }
-}));
 
 function App() {
   const classes = useStyles();
@@ -66,7 +31,7 @@ function App() {
   };
 
   const removeItem = id => {
-    setItems(items.filter(item => item.id != id));
+    setItems(items.filter(item => item.id !== id));
   };
 
   localStorage.setItem("items", JSON.stringify(items));
@@ -90,17 +55,7 @@ function App() {
         />
         <List className={classes.list}>
           {items.map(item => (
-            <ListItem key={item.id} divider={true} className={classes.item}>
-              <Typography>{item.text}</Typography>
-              <Button
-                className={classes.button}
-                onClick={e => {
-                  removeItem(item.id);
-                }}
-              >
-                <DeleteIcon />
-              </Button>
-            </ListItem>
+            <Item item={item} removeItem={removeItem} key={item.id} />
           ))}
         </List>
       </Container>
