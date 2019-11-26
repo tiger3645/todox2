@@ -4,14 +4,14 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    maxHeight: "70vh"
   },
   list: {
     width: "100%",
     maxWidth: 360,
     position: "relative",
-    overflow: "auto",
-    maxHeight: "50vh"
+    overflow: "auto"
   },
   button: {
     margin: theme.spacing(1),
@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     maxHeight: "30vh",
-    marginBottom: "1rem"
+    marginBottom: "1rem",
+    color: "#51A4FB"
   },
   item: {
     display: "flex",
